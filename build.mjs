@@ -2,6 +2,7 @@ import {build} from 'esbuild';
 import {mkdir,cp,readFile,writeFile,readdir,rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 await mkdir('dist',{recursive:true});
+for(const name of ['client','server','.openai'])await rm('dist/'+name,{recursive:true,force:true});
 await rm('dist/chunks',{recursive:true,force:true});
 await build({entryPoints:{app:'src/App.jsx',parser:'src/parser.mjs',worker:'src/worker.mjs'},bundle:true,outdir:'dist',format:'esm',splitting:true,chunkNames:'chunks/[name]-[hash]',minify:true,legalComments:'eof',loader:{'.css':'css'}});
 await writeFile('dist/pdf.worker.min.mjs',await readFile('node_modules/pdfjs-dist/build/pdf.worker.min.mjs'));
@@ -14,3 +15,15 @@ const version=hash.digest('hex').slice(0,16);
 const template=await readFile('src/sw-template.js','utf8');
 await writeFile('dist/sw.js',template.replace('__VERSION__',version).replace('__ASSETS__',JSON.stringify(['./',...assets.map(p=>'./'+p.slice(5))])));
 console.log(`Built ${assets.length} local assets. Offline version ${version}.`);
+
+// Publish only the public client directory to GitHub Pages; Sites also gets the Worker.
+await mkdir('dist/client',{recursive:true});
+for(const entry of await readdir('dist',{withFileTypes:true})){
+ if(['client','server','.openai'].includes(entry.name))continue;
+ await cp('dist/'+entry.name,'dist/client/'+entry.name,{recursive:true});
+}
+await build({entryPoints:['server/worker.mjs'],bundle:true,outfile:'dist/server/index.js',format:'esm',platform:'browser',target:'es2022',minify:true});
+await mkdir('dist/.openai',{recursive:true});
+let hosting={};try{hosting=JSON.parse(await readFile('.openai/hosting.json','utf8'));}catch{}
+delete hosting.static;
+await writeFile('dist/.openai/hosting.json',JSON.stringify(hosting));

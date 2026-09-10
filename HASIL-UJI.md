@@ -1,3 +1,11 @@
+# Pembaruan pengujian versi 2.0
+
+25 tes otomatis lulus, termasuk 9 tes backend online. Kontrak Winston diuji dengan respons sintetis: skor AI dibalik dari Human Score secara benar; skor kemiripan tidak dijumlahkan antar sumber; skor hilang tidak dianggap nol; token salah, kredit habis, kegagalan jaringan, URL berbahaya, arsip parsial, dan ekspor ter-escape ditangani. Backend membatasi endpoint, body, bahasa, dan persetujuan serta tidak melakukan retry otomatis.
+
+**Belum diverifikasi:** permintaan dengan API token Winston nyata, akurasi deteksi terhadap korpus Indonesia, dan interaksi browser versi online. Tidak ada penggunaan kredit provider selama tes. Pengujian versi lokal di bawah adalah hasil versi 1 dan bukan klaim pengujian ulang antarmuka versi 2.
+
+---
+
 # Hasil verifikasi CekNaskah 1.0
 
 Dijalankan 10 September 2026 pada macOS, Node.js 24.15.0 dan browser bawaan Codex. Ini catatan pengujian aplikasi, bukan evaluasi akurasi deteksi plagiarisme atau AI.

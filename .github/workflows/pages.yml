@@ -25,7 +25,7 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
-      - name: Build all offline assets
+      - name: Build online client, server, and local assets
         run: npm run build
       - name: Test matching, storage, reports, and Pages paths
         run: npm test
@@ -34,7 +34,7 @@ jobs:
       - name: Upload static website
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: dist/client
 
   deploy:
     needs: build

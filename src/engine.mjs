@@ -1,4 +1,4 @@
-export const VERSION='1.0.0';
+export const VERSION='2.0.0';
 export const LIMITS={fileBytes:10*1024*1024,textChars:1000000,sources:200,backupBytes:100*1024*1024};
 export function tokenize(text){return Array.from(text.matchAll(/[\p{L}\p{N}][\p{L}\p{M}\p{N}]*/gu),m=>({value:m[0].normalize('NFKC').toLowerCase(),start:m.index,end:m.index+m[0].length}));}
 export async function checksum(text){const canonical=tokenize(text).map(x=>x.value).join(' ');return [...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(canonical)))].map(x=>x.toString(16).padStart(2,'0')).join('');}

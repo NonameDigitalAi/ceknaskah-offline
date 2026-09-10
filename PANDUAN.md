@@ -1,3 +1,5 @@
+> Panduan ini khusus **mode Kemiripan Lokal**. Untuk deteksi AI dan sumber internet, lihat [PANDUAN-ONLINE.md](PANDUAN-ONLINE.md).
+
 # CekNaskah Offline
 
 Aplikasi lokal untuk meninjau kemiripan jurnal, artikel, dan naskah terhadap sumber yang Anda masukkan. Seluruh pemrosesan dokumen berlangsung di browser. Tidak ada API GPT, unggahan dokumen, database Turnitin, atau pemeriksaan seluruh internet.
