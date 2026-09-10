@@ -4,7 +4,7 @@ Aplikasi lokal untuk meninjau kemiripan jurnal, artikel, dan naskah terhadap sum
 
 ## Mulai memakai
 
-1. Pada komputer tempat aplikasi ini disiapkan, buka **http://localhost:4173/**. Pratinjau lokal sedang berjalan.
+1. Buka **https://nonamedigitalai.github.io/ceknaskah-offline/**. Versi lokal juga dapat dibuka melalui **http://localhost:4173/** saat server lokal berjalan.
 2. Tunggu status **Siap digunakan offline**. Status ini memeriksa keberadaan seluruh aset dalam cache, termasuk parser PDF/DOCX dan worker.
 3. Pilih **Koleksi Sumber → Tambah sumber**. Tempelkan teks atau impor TXT, DOCX, dan PDF yang memiliki lapisan teks. Tinjau hasil ekstraksinya sebelum menyimpan.
 4. Buka **Periksa Naskah**, masukkan judul dan teks atau impor dokumen. Pilih sumber pembanding, lalu **Periksa kemiripan**.
@@ -21,7 +21,9 @@ Sesudah seluruh aset siap, alamat yang sama dapat dibuka dari cache service work
 
 Jika cache belum tersedia atau pernah dihapus, jalankan **Buka-CekNaskah.command** di macOS, atau jalankan `npm start` dari folder proyek (memerlukan Node.js 20+), lalu buka http://localhost:4173/. Server tersebut hanya menyajikan berkas aplikasi pada loopback perangkat ini; server tidak menerima dokumen.
 
-Jangan membuka `dist/index.html` dengan klik dua kali (`file://`): cara itu tidak mendukung alur PWA yang dijanjikan. Untuk distribusi ke komputer lain tanpa pemasangan Node.js, unggah isi folder `dist` ke hosting statis HTTPS. Tidak ada naskah pengguna dalam folder build. Versi ini belum dipublikasikan ke hosting eksternal.
+Jangan membuka `dist/index.html` dengan klik dua kali (`file://`): cara itu tidak mendukung alur PWA yang dijanjikan. Versi publik tersedia di GitHub Pages; pengguna komputer lain cukup membuka alamat HTTPS di atas tanpa memasang Node.js. Tidak ada naskah pengguna dalam folder build.
+
+Penyimpanan localhost dan GitHub Pages terpisah. Untuk memindahkan arsip lama, ekspor cadangan dari aplikasi localhost lalu pulihkan cadangan pada alamat GitHub Pages. Perpindahan alamat tidak mengunggah atau memindahkan arsip secara otomatis.
 
 Saat pembaruan tersedia, tutup semua tab CekNaskah sesudah data tersimpan lalu buka lagi. Pembaruan tidak memaksa reload atau menghapus IndexedDB. Pemeriksaan yang terhenti saat tab ditutup ditandai **Terhenti** dan dapat dijalankan ulang.
 

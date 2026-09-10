@@ -1,5 +1,7 @@
 # CekNaskah Offline
 
+**[Buka aplikasi di GitHub Pages](https://nonamedigitalai.github.io/ceknaskah-offline/)**
+
 Aplikasi pemeriksaan kemiripan tekstual untuk jurnal dan artikel. Naskah dibandingkan dengan koleksi sumber yang pengguna masukkan; seluruh pemrosesan dan penyimpanan naskah berlangsung di browser.
 
 **Bukan detektor GPT, layanan Turnitin, atau sertifikat bebas plagiarisme.** Tidak ada API AI, unggahan naskah ke server, database sumber daring, login aplikasi, atau biaya per pemeriksaan.
