@@ -1,0 +1,1 @@
+import{i as s}from"./chunks/chunk-4JICBM6Y.js";self.onmessage=({data:r})=>{try{self.postMessage({type:"result",result:s(r,e=>self.postMessage({type:"progress",...e}))})}catch(e){self.postMessage({type:"error",error:e.message})}};
